@@ -1,4 +1,8 @@
 function App() {
-  return <h1>HI</h1>;
+  return (
+    <div>
+      <form action=""></form>
+    </div>
+  );
 }
 export default App;
