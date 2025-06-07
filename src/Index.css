@@ -1,0 +1,76 @@
+:root {
+  /* ## Colors */
+  /* ### Primary */
+
+  --clr-Blue-950: hsl(213, 96%, 18%);
+  --clr-Purple-600: hsl(243, 100%, 62%);
+  --clr-Blue-300: hsl(228, 100%, 84%);
+  --clr-Blue-200: hsl(206, 94%, 87%);
+  --clr-Red-500: hsl(354, 84%, 57%);
+
+  /* ### Neutral */
+
+  --clr-Grey-500: hsl(231, 11%, 63%);
+  --clr-Purple-200: hsl(229, 24%, 87%);
+  --clr-Blue-100: hsl(218, 100%, 97%);
+  --clr-Blue-50: hsl(231, 100%, 99%);
+  --clr-White: hsl(0, 100%, 100%);
+
+  /* ### Body Copy */
+
+  --Font-size: 1rem;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-size: inherit;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  font-family: inherit;
+}
+
+html {
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+}
+
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+#root,
+#__next {
+  isolation: isolate;
+}
+html,
+body {
+  height: 100%;
+  display: grid;
+  background-color: var(--clr-Blue-100);
+}

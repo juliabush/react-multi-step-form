@@ -1,7 +1,11 @@
+import "./App.css";
+
 function App() {
   return (
-    <div>
-      <form action=""></form>
+    <div className="container">
+      <form action="">
+        <div className="page-number"></div>
+      </form>
     </div>
   );
 }
