@@ -37,9 +37,47 @@ function App() {
             <p className="step">Step 4</p>
             <p className="step-description">Summary</p>
           </div>
+          <div className="container-text">
+            <h1 className="step-1-heading">Personal info</h1>
+            <p className="step-1-sub-heading">
+              Please provide your name, email address, and phone number.
+            </p>
+            <form>
+              <div className="form-mini-flexbox">
+                <label htmlFor="Name">Name</label>
+                <input
+                  className="step-1-input"
+                  type="text"
+                  name="name"
+                  placeholder="e.g. Stephen King"
+                  required
+                />
+              </div>
+              <div className="form-mini-flexbox">
+                <label htmlFor="Email">Email Address </label>
+                <input
+                  className="step-1-input"
+                  type="email"
+                  name="email"
+                  placeholder="e.g. stephenking@lorem.com"
+                  required
+                />
+              </div>
+              <div className="form-mini-flexbox">
+                <label htmlFor="Phone Number">Phone Number</label>
+                <input
+                  className="step-1-input"
+                  type="number"
+                  name="phone-number"
+                  placeholder="e.g. +1 234 567 890"
+                  required
+                />
+              </div>
+            </form>
+            <button className="step-toggle-button">Next Step</button>
+          </div>
         </div>
       </ul>
-      <form action=""></form>
     </div>
   );
 }
