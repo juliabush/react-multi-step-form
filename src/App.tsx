@@ -13,29 +13,29 @@ function App() {
         <div className="row-flexbox-list">
           <li className="circular-page-number">1</li>
           <div>
-            <p>Step 1</p>
-            <p>Your Info</p>
+            <p className="step">Step 1</p>
+            <p className="step-description">Your Info</p>
           </div>
         </div>
         <div className="row-flexbox-list">
           <li className="circular-page-number">2</li>
           <div>
-            <p>Step 2</p>
-            <p>Your Info</p>
+            <p className="step">Step 2</p>
+            <p className="step-description">Select Plan</p>
           </div>
         </div>
         <div className="row-flexbox-list">
           <li className="circular-page-number">3</li>
           <div>
-            <p>Step 3</p>
-            <p>Your Info</p>
+            <p className="step">Step 3</p>
+            <p className="step-description">Add-ons</p>
           </div>
         </div>
         <div className="row-flexbox-list">
           <li className="circular-page-number">4</li>
           <div>
-            <p>Step 4</p>
-            <p>Your Info</p>
+            <p className="step">Step 4</p>
+            <p className="step-description">Summary</p>
           </div>
         </div>
       </ul>
