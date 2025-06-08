@@ -1,7 +1,102 @@
-import "./App.css";
+import { useMultistepform } from "./useMultistepform";
 import bgSidebarDesktop from "./assets/bg-sidebar-desktop.svg";
+import "./App.css";
+import type { ReactElement } from "react";
+
+function Step1(): ReactElement {
+  return (
+    <>
+      <h1 className="step-1-heading">Personal info</h1>
+      <p className="step-1-sub-heading">
+        Please provide your name, email address, and phone number.
+      </p>
+      <form>
+        <div className="form-mini-flexbox">
+          <label htmlFor="Name">Name</label>
+          <input
+            className="step-1-input"
+            type="text"
+            name="name"
+            placeholder="e.g. Stephen King"
+            required
+          />
+        </div>
+        <div className="form-mini-flexbox">
+          <label htmlFor="Email">Email Address </label>
+          <input
+            className="step-1-input"
+            type="email"
+            name="email"
+            placeholder="e.g. stephenking@lorem.com"
+            required
+          />
+        </div>
+        <div className="form-mini-flexbox">
+          <label htmlFor="Phone Number">Phone Number</label>
+          <input
+            className="step-1-input"
+            type="text"
+            name="phone-number"
+            placeholder="e.g. +1 234 567 890"
+            required
+          />
+        </div>
+      </form>
+    </>
+  );
+}
+function Step2(): ReactElement {
+  return (
+    <>
+      <h1 className="step-1-heading">Select your plan</h1>
+      <p className="step-1-sub-heading">
+        You have the option of monthly or yearly billing.
+      </p>
+      <div className="billing-type-buttons-flexbox">
+        <button></button>
+        <button></button>
+        <button></button>
+      </div>
+      <div className="toggle-monthly-yearly"></div>
+    </>
+  );
+}
+function Step3(): ReactElement {
+  return (
+    <>
+      <h1 className="step-1-heading">Pick add-ons</h1>
+      <p className="step-1-sub-heading">
+        Add-ons help enhance your gaming experience.
+      </p>
+      <div className="billing-type-buttons-flexbox">
+        <button></button>
+        <button></button>
+        <button></button>
+      </div>
+    </>
+  );
+}
+function Step4(): ReactElement {
+  return (
+    <>
+      <h1 className="step-1-heading">Finishing up</h1>
+      <p className="step-1-sub-heading">
+        Double-check everything looks OK before confirming.
+      </p>
+      <div className="billing-type-buttons-flexbox">
+        <button></button>
+        <button></button>
+        <button></button>
+      </div>
+    </>
+  );
+}
 
 function App() {
+  const steps = [<Step1 />, <Step2 />, <Step3 />, <Step4 />];
+
+  const { currentStepIndex, step, back, next } = useMultistepform(steps);
+
   return (
     <div className="container">
       <img
@@ -9,76 +104,39 @@ function App() {
         alt="Colourful Sidebar"
         className="desktop-image"
       />
+
       <ul className="page-numbers" role="list">
-        <div className="row-flexbox-list">
-          <li className="circular-page-number">1</li>
-          <div>
-            <p className="step">Step 1</p>
-            <p className="step-description">Your Info</p>
+        {[...Array(4)].map((_, index) => (
+          <div key={index} className="row-flexbox-list">
+            <li
+              className={`circular-page-number ${
+                index === currentStepIndex ? "active-step" : ""
+              }`}
+            >
+              {index + 1}
+            </li>
+            <div>
+              <p className="step">Step {index + 1}</p>
+              <p className="step-description">
+                {["Your Info", "Select Plan", "Add-ons", "Summary"][index]}
+              </p>
+            </div>
           </div>
-        </div>
-        <div className="row-flexbox-list">
-          <li className="circular-page-number">2</li>
-          <div>
-            <p className="step">Step 2</p>
-            <p className="step-description">Select Plan</p>
-          </div>
-        </div>
-        <div className="row-flexbox-list">
-          <li className="circular-page-number">3</li>
-          <div>
-            <p className="step">Step 3</p>
-            <p className="step-description">Add-ons</p>
-          </div>
-        </div>
-        <div className="row-flexbox-list">
-          <li className="circular-page-number">4</li>
-          <div>
-            <p className="step">Step 4</p>
-            <p className="step-description">Summary</p>
-          </div>
-          <div className="container-text">
-            <h1 className="step-1-heading">Personal info</h1>
-            <p className="step-1-sub-heading">
-              Please provide your name, email address, and phone number.
-            </p>
-            <form>
-              <div className="form-mini-flexbox">
-                <label htmlFor="Name">Name</label>
-                <input
-                  className="step-1-input"
-                  type="text"
-                  name="name"
-                  placeholder="e.g. Stephen King"
-                  required
-                />
-              </div>
-              <div className="form-mini-flexbox">
-                <label htmlFor="Email">Email Address </label>
-                <input
-                  className="step-1-input"
-                  type="email"
-                  name="email"
-                  placeholder="e.g. stephenking@lorem.com"
-                  required
-                />
-              </div>
-              <div className="form-mini-flexbox">
-                <label htmlFor="Phone Number">Phone Number</label>
-                <input
-                  className="step-1-input"
-                  type="number"
-                  name="phone-number"
-                  placeholder="e.g. +1 234 567 890"
-                  required
-                />
-              </div>
-            </form>
-            <button className="step-toggle-button">Next Step</button>
-          </div>
-        </div>
+        ))}
       </ul>
+
+      <div className="container-text">
+        {step}
+        <button className="step-back-button" onClick={back}>
+          Go back
+        </button>
+        <button className="step-toggle-button" onClick={next}>
+          Next Step
+        </button>
+      </div>
     </div>
   );
 }
+
 export default App;
+export { Step1 };

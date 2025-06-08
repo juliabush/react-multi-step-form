@@ -53,8 +53,8 @@
   color: black;
   position: absolute;
   padding: 1rem;
-  left: 136%;
-  bottom: -20%;
+  left: 38%;
+  top: 5%;
 }
 .step-1-heading {
   font-size: 2rem;
@@ -83,6 +83,17 @@
   border: none;
   background-color: hsl(213, 96%, 18%);
   color: white;
+  cursor: pointer;
+}
+.step-back-button {
+  position: absolute;
+  bottom: -40%;
+  left: 3%;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: none;
+  color: rgba(0, 0, 0, 0.616);
+  cursor: pointer;
 }
 .step-1-heading,
 label {
