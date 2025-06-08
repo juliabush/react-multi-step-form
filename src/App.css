@@ -78,6 +78,19 @@
   position: absolute;
   bottom: -40%;
   place-self: end;
-  padding: 0.8rem;
+  padding: 1rem;
   border-radius: 0.5rem;
+  border: none;
+  background-color: hsl(213, 96%, 18%);
+  color: white;
+}
+.step-1-heading,
+label {
+  color: hsl(213, 96%, 18%);
+}
+.step-1-sub-heading {
+  opacity: 0.7;
+}
+input {
+  border: 2px solid rgba(0, 0, 0, 0.301);
 }
