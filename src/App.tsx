@@ -59,25 +59,21 @@ function Step2(): ReactElement {
         <button>
           <img
             src={iconArcade}
-            alt="Colourful Sidebar"
-            className="desktop-image"
+            alt="Icon for the arcade plan"
+            className="icon"
           />
           <p>Arcade</p>
         </button>
         <button>
           <img
             src={iconAdvanced}
-            alt="Colourful Sidebar"
-            className="desktop-image"
+            alt="Icon for the advanced plan"
+            className="icon"
           />
           <p>Advanced</p>
         </button>
         <button>
-          <img
-            src={iconPro}
-            alt="Colourful Sidebar"
-            className="desktop-image"
-          />
+          <img src={iconPro} alt="Icon for the pro plan" className="icon" />
           <p>Pro</p>
         </button>
       </div>
@@ -99,10 +95,22 @@ function Step3(): ReactElement {
       <p className="step-1-sub-heading">
         Add-ons help enhance your gaming experience.
       </p>
-      <div className="billing-type-buttons-flexbox">
-        <button></button>
-        <button></button>
-        <button></button>
+      <div className="add-ons-flexbox">
+        <button>
+          <div className="add-ons-text">
+            Online Service Access to multiplayer games
+          </div>
+        </button>
+        <button>
+          <div className="add-ons-text">
+            Larger Storage Extra 1TB of cloud save
+          </div>
+        </button>
+        <button>
+          <div className="add-ons-text">
+            Customizable profile Custom theme on your profile
+          </div>
+        </button>
       </div>
     </>
   );
