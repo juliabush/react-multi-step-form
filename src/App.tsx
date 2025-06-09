@@ -1,5 +1,8 @@
 import { useMultistepform } from "./useMultistepform";
 import bgSidebarDesktop from "./assets/bg-sidebar-desktop.svg";
+import iconArcade from "./assets/icon-arcade.svg";
+import iconAdvanced from "./assets/icon-advanced.svg";
+import iconPro from "./assets/icon-pro.svg";
 import "./App.css";
 import type { ReactElement } from "react";
 
@@ -53,11 +56,39 @@ function Step2(): ReactElement {
         You have the option of monthly or yearly billing.
       </p>
       <div className="billing-type-buttons-flexbox">
-        <button></button>
-        <button></button>
-        <button></button>
+        <button>
+          <img
+            src={iconArcade}
+            alt="Colourful Sidebar"
+            className="desktop-image"
+          />
+          <p>Arcade</p>
+        </button>
+        <button>
+          <img
+            src={iconAdvanced}
+            alt="Colourful Sidebar"
+            className="desktop-image"
+          />
+          <p>Advanced</p>
+        </button>
+        <button>
+          <img
+            src={iconPro}
+            alt="Colourful Sidebar"
+            className="desktop-image"
+          />
+          <p>Pro</p>
+        </button>
       </div>
-      <div className="toggle-monthly-yearly"></div>
+      <div className="toggle-monthly-yearly">
+        <p>Monthly</p>
+        <button
+          className="toggle-switch"
+          // onClick={() => setToggled(!toggled)}
+        ></button>
+        <p>Yearly</p>
+      </div>
     </>
   );
 }
