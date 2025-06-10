@@ -105,3 +105,27 @@ label {
 input {
   border: 2px solid rgba(0, 0, 0, 0.301);
 }
+.toggle-switch {
+  width: 40px;
+  height: 20px;
+  background: lightgray;
+  border-radius: 10px;
+  position: relative;
+  cursor: pointer;
+  border: none;
+}
+
+.toggle-knob {
+  width: 18px;
+  height: 18px;
+  background: white;
+  border-radius: 50%;
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  transition: transform 0.2s;
+}
+
+.toggle-switch.yearly .toggle-knob {
+  transform: translateX(20px);
+}

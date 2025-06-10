@@ -48,13 +48,18 @@ function Step1(): ReactElement {
     </>
   );
 }
+import { useState } from "react";
+
 function Step2(): ReactElement {
+  const [toggled, setToggled] = useState(false);
+
   return (
     <>
       <h1 className="step-1-heading">Select your plan</h1>
       <p className="step-1-sub-heading">
         You have the option of monthly or yearly billing.
       </p>
+
       <div className="billing-type-buttons-flexbox">
         <button>
           <img
@@ -77,12 +82,15 @@ function Step2(): ReactElement {
           <p>Pro</p>
         </button>
       </div>
+
       <div className="toggle-monthly-yearly">
         <p>Monthly</p>
         <button
-          className="toggle-switch"
-          // onClick={() => setToggled(!toggled)}
-        ></button>
+          className={`toggle-switch ${toggled ? "yearly" : "monthly"}`}
+          onClick={() => setToggled((prev) => !prev)}
+        >
+          <div className="toggle-knob" />
+        </button>
         <p>Yearly</p>
       </div>
     </>
@@ -98,17 +106,23 @@ function Step3(): ReactElement {
       <div className="add-ons-flexbox">
         <button>
           <div className="add-ons-text">
-            Online Service Access to multiplayer games
+            <p>Online Service</p>
+            <p>Access to multiplayer games</p>
+            <div className="add-on"></div>
           </div>
         </button>
         <button>
           <div className="add-ons-text">
-            Larger Storage Extra 1TB of cloud save
+            <p>Larger Storage </p>
+            <p>Extra 1TB of cloud save</p>
+            <div className="add-on"></div>
           </div>
         </button>
         <button>
           <div className="add-ons-text">
-            Customizable profile Custom theme on your profile
+            <p>Customizable profile </p>
+            <p>Custom theme on your profile</p>
+            <div className="add-on"></div>
           </div>
         </button>
       </div>
