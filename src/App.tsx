@@ -61,7 +61,7 @@ function Step2(): ReactElement {
       </p>
 
       <div className="billing-type-buttons-flexbox">
-        <button>
+        <button className="billing-card">
           <img
             src={iconArcade}
             alt="Icon for the arcade plan"
@@ -69,17 +69,19 @@ function Step2(): ReactElement {
           />
           <p>Arcade</p>
         </button>
-        <button>
+        <button className="billing-card">
           <img
             src={iconAdvanced}
             alt="Icon for the advanced plan"
             className="icon"
           />
           <p>Advanced</p>
+          <p></p>
         </button>
-        <button>
+        <button className="billing-card">
           <img src={iconPro} alt="Icon for the pro plan" className="icon" />
           <p>Pro</p>
+          <p></p>
         </button>
       </div>
 
