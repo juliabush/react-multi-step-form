@@ -67,7 +67,7 @@ function Step2(): ReactElement {
             alt="Icon for the arcade plan"
             className="icon"
           />
-          <p>Arcade</p>
+          <p className="billing-card-title">Arcade</p>
         </button>
         <button className="billing-card">
           <img
@@ -75,12 +75,12 @@ function Step2(): ReactElement {
             alt="Icon for the advanced plan"
             className="icon"
           />
-          <p>Advanced</p>
+          <p className="billing-card-title">Advanced</p>
           <p></p>
         </button>
         <button className="billing-card">
           <img src={iconPro} alt="Icon for the pro plan" className="icon" />
-          <p>Pro</p>
+          <p className="billing-card-title">Pro</p>
           <p></p>
         </button>
       </div>
