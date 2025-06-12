@@ -102,7 +102,7 @@ function Step3(): ReactElement {
   return (
     <>
       <h1 className="step-1-heading">Pick add-ons</h1>
-      <p className="step-1-sub-heading">
+      <p className="step-3-sub-heading">
         Add-ons help enhance your gaming experience.
       </p>
       <div className="add-ons-flexbox">
