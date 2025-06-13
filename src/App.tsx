@@ -13,7 +13,7 @@ function Step1(): ReactElement {
       <p className="step-1-sub-heading">
         Please provide your name, email address, and phone number.
       </p>
-      <form>
+      <form id="step-1-form">
         <div className="form-mini-flexbox">
           <label htmlFor="Name">Name</label>
           <input
@@ -150,7 +150,7 @@ function Step4(): ReactElement {
 function App() {
   const steps = [<Step1 />, <Step2 />, <Step3 />, <Step4 />];
 
-  const { currentStepIndex, step, back, next } = useMultistepform(steps);
+  const { currentStepIndex, step, back, next, goTo } = useMultistepform(steps);
 
   return (
     <div className="container">
@@ -167,6 +167,8 @@ function App() {
               className={`circular-page-number ${
                 index === currentStepIndex ? "active-step" : ""
               }`}
+              onClick={() => goTo(index)}
+              style={{ cursor: "pointer" }}
             >
               {index + 1}
             </li>
@@ -182,10 +184,16 @@ function App() {
 
       <div className="container-text">
         {step}
-        <button className="step-back-button" onClick={back}>
-          Go back
-        </button>
-        <button className="step-toggle-button" onClick={next}>
+        {currentStepIndex > 0 && (
+          <button className="step-back-button" onClick={back}>
+            Go back
+          </button>
+        )}
+        <button
+          className="step-toggle-button"
+          form="step-1-form"
+          onClick={next}
+        >
           Next Step
         </button>
       </div>
