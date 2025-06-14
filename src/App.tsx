@@ -3,6 +3,8 @@ import bgSidebarDesktop from "./assets/bg-sidebar-desktop.svg";
 import iconArcade from "./assets/icon-arcade.svg";
 import iconAdvanced from "./assets/icon-advanced.svg";
 import iconPro from "./assets/icon-pro.svg";
+import iconCheckmark from "./assets/icon-checkmark.svg";
+import iconThankYou from "./assets/icon-thank-you.svg";
 import "./App.css";
 import type { ReactElement } from "react";
 
@@ -106,25 +108,43 @@ function Step3(): ReactElement {
         Add-ons help enhance your gaming experience.
       </p>
       <div className="add-ons-flexbox">
-        <button>
-          <div className="add-ons-text">
-            <p>Online Service</p>
-            <p>Access to multiplayer games</p>
-            <div className="add-on"></div>
+        <button className="add-on-button">
+          <div className="add-ons-flex">
+            <img
+              src={iconCheckmark}
+              alt="Icon of a checkmark"
+              className="add-on-checkmark"
+            />
+            <div className="add-ons-text">
+              <p className="add-on-title">Online Service</p>
+              <p className="add-on-subtitle">Access to multiplayer games</p>
+            </div>
           </div>
         </button>
-        <button>
-          <div className="add-ons-text">
-            <p>Larger Storage </p>
-            <p>Extra 1TB of cloud save</p>
-            <div className="add-on"></div>
+        <button className="add-on-button">
+          <div className="add-ons-flex">
+            <img
+              src={iconCheckmark}
+              alt="Icon of a checkmark"
+              className="add-on-checkmark"
+            />
+            <div className="add-ons-text">
+              <p className="add-on-title">Larger Storage </p>
+              <p className="add-on-subtitle">Extra 1TB of cloud save</p>
+            </div>
           </div>
         </button>
-        <button>
-          <div className="add-ons-text">
-            <p>Customizable profile </p>
-            <p>Custom theme on your profile</p>
-            <div className="add-on"></div>
+        <button className="add-on-button">
+          <div className="add-ons-flex">
+            <img
+              src={iconCheckmark}
+              alt="Icon of a checkmark"
+              className="add-on-checkmark"
+            />
+            <div className="add-ons-text">
+              <p className="add-on-title">Customizable profile </p>
+              <p className="add-on-subtitle">Custom theme on your profile</p>
+            </div>
           </div>
         </button>
       </div>
