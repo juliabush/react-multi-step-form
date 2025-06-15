@@ -54,6 +54,11 @@ import { useState } from "react";
 
 function Step2(): ReactElement {
   const [toggled, setToggled] = useState(false);
+  const [isActive, setIsActive] = useState(false);
+
+  const handleClick = () => {
+    setIsActive(!isActive);
+  };
 
   return (
     <>
@@ -70,6 +75,8 @@ function Step2(): ReactElement {
             className="icon"
           />
           <p className="billing-card-title">Arcade</p>
+          <p className="billing-card-price">{toggled ? "$90/yr" : "$9/mo"}</p>
+          {toggled && <p className="billing-card-offer"> 2 months free</p>}
         </button>
         <button className="billing-card">
           <img
@@ -78,24 +85,26 @@ function Step2(): ReactElement {
             className="icon"
           />
           <p className="billing-card-title">Advanced</p>
-          <p></p>
+          <p className="billing-card-price">{toggled ? "$120/yr" : "$12/mo"}</p>
+          {toggled && <p className="billing-card-offer"> 2 months free</p>}
         </button>
         <button className="billing-card">
           <img src={iconPro} alt="Icon for the pro plan" className="icon" />
           <p className="billing-card-title">Pro</p>
-          <p></p>
+          <p className="billing-card-price">{toggled ? "$150/yr" : "$15/mo"}</p>
+          {toggled && <p className="billing-card-offer"> 2 months free</p>}
         </button>
       </div>
 
       <div className="toggle-monthly-yearly">
-        <p>Monthly</p>
+        <p className={toggled ? "" : "active-label"}>Monthly</p>
         <button
           className={`toggle-switch ${toggled ? "yearly" : "monthly"}`}
           onClick={() => setToggled((prev) => !prev)}
         >
           <div className="toggle-knob" />
         </button>
-        <p>Yearly</p>
+        <p className={toggled ? "active-label" : ""}>Yearly</p>
       </div>
     </>
   );
