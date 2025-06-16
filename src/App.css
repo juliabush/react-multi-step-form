@@ -229,3 +229,7 @@ input {
   font-size: 1rem;
   color: hsl(231, 11%, 63%);
 }
+.selected-plan {
+  border: 2px solid #1c168a;
+  background-color: #f0f4ff;
+}

@@ -54,11 +54,13 @@ import { useState } from "react";
 
 function Step2(): ReactElement {
   const [toggled, setToggled] = useState(false);
-  const [isActive, setIsActive] = useState(false);
+  const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
 
-  const handleClick = () => {
-    setIsActive(!isActive);
+  const handleSelectPlan = (plan: string) => {
+    setSelectedPlan(plan);
   };
+
+  const isSelected = (plan: string) => selectedPlan === plan;
 
   return (
     <>
@@ -68,7 +70,12 @@ function Step2(): ReactElement {
       </p>
 
       <div className="billing-type-buttons-flexbox">
-        <button className="billing-card">
+        <button
+          className={`billing-card ${
+            isSelected("Arcade") ? "selected-plan" : ""
+          }`}
+          onClick={() => handleSelectPlan("Arcade")}
+        >
           <img
             src={iconArcade}
             alt="Icon for the arcade plan"
@@ -78,7 +85,12 @@ function Step2(): ReactElement {
           <p className="billing-card-price">{toggled ? "$90/yr" : "$9/mo"}</p>
           {toggled && <p className="billing-card-offer"> 2 months free</p>}
         </button>
-        <button className="billing-card">
+        <button
+          className={`billing-card ${
+            isSelected("Advanced") ? "selected-plan" : ""
+          }`}
+          onClick={() => handleSelectPlan("Advanced")}
+        >
           <img
             src={iconAdvanced}
             alt="Icon for the advanced plan"
@@ -88,7 +100,10 @@ function Step2(): ReactElement {
           <p className="billing-card-price">{toggled ? "$120/yr" : "$12/mo"}</p>
           {toggled && <p className="billing-card-offer"> 2 months free</p>}
         </button>
-        <button className="billing-card">
+        <button
+          className={`billing-card ${isSelected("Pro") ? "selected-plan" : ""}`}
+          onClick={() => handleSelectPlan("Pro")}
+        >
           <img src={iconPro} alt="Icon for the pro plan" className="icon" />
           <p className="billing-card-title">Pro</p>
           <p className="billing-card-price">{toggled ? "$150/yr" : "$15/mo"}</p>
