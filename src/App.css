@@ -246,3 +246,25 @@ input {
   margin-left: auto;
   margin-right: 1rem;
 }
+.summary-box {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  background-color: hsla(228, 100%, 84%, 0.3);
+  padding: 1.5rem;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+}
+.summary-plan-row,
+.summary-addon-row,
+.summary-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.summary-total {
+  background-color: hsl(228, 100%, 84%, 0.3);
+  padding: 1.5rem;
+  border-bottom-right-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+}
