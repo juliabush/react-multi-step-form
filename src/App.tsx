@@ -153,12 +153,14 @@ function Step2({
 }
 
 function Step3({
-  billingCycle, // existing
+  billingCycle,
+  selectedAddOns,
+  setSelectedAddOns,
 }: {
-  billingCycle: "monthly" | "yearly"; // existing
+  billingCycle: "monthly" | "yearly";
+  selectedAddOns: string[];
+  setSelectedAddOns: React.Dispatch<React.SetStateAction<string[]>>;
 }): ReactElement {
-  const [selectedAddOns, setSelectedAddOns] = useState<string[]>([]); // added state for selected add-ons
-
   const toggleAddOn = (addon: string) => {
     // added toggle function
     setSelectedAddOns((prev) =>
@@ -252,13 +254,72 @@ function Step3({
   );
 }
 
-function Step4(): ReactElement {
+function Step4({
+  selectedPlan,
+  billingCycle,
+  selectedAddOns,
+}: {
+  selectedPlan: string | null;
+  billingCycle: "monthly" | "yearly";
+  selectedAddOns: string[];
+}): ReactElement {
+  const planPrices: Record<string, { monthly: number; yearly: number }> = {
+    Arcade: { monthly: 9, yearly: 90 },
+    Advanced: { monthly: 12, yearly: 120 },
+    Pro: { monthly: 15, yearly: 150 },
+  };
+
+  const addOnPrices: Record<string, { monthly: number; yearly: number }> = {
+    "Online Service": { monthly: 1, yearly: 10 },
+    "Larger Storage": { monthly: 2, yearly: 20 },
+    "Customizable Profile": { monthly: 2, yearly: 20 },
+  };
+
+  const planPrice = selectedPlan ? planPrices[selectedPlan][billingCycle] : 0;
+  const addOnsTotal = selectedAddOns.reduce(
+    (sum, addon) => sum + addOnPrices[addon][billingCycle],
+    0
+  );
+
+  const total = planPrice + addOnsTotal;
+
   return (
     <>
       <h1 className="step-1-heading">Finishing up</h1>
       <p className="step-1-sub-heading">
         Double-check everything looks OK before confirming.
       </p>
+
+      <div className="summary-box">
+        <div className="summary-plan-row">
+          <div>
+            <p className="summary-plan-title">
+              {selectedPlan} ({billingCycle})
+            </p>
+            <p className="change-link">Change</p>
+          </div>
+          <p className="summary-plan-price">
+            ${planPrice}/{billingCycle === "yearly" ? "yr" : "mo"}
+          </p>
+        </div>
+        <hr />
+        {selectedAddOns.map((addon) => (
+          <div key={addon} className="summary-addon-row">
+            <p>{addon}</p>
+            <p>
+              +${addOnPrices[addon][billingCycle]}/
+              {billingCycle === "yearly" ? "yr" : "mo"}
+            </p>
+          </div>
+        ))}
+      </div>
+
+      <div className="summary-total">
+        <p>Total (per {billingCycle === "yearly" ? "year" : "month"})</p>
+        <p className="summary-total-amount">
+          ${total}/{billingCycle === "yearly" ? "yr" : "mo"}
+        </p>
+      </div>
     </>
   );
 }
@@ -267,18 +328,26 @@ function App() {
   const [billingCycle, setBillingCycle] = useState<"monthly" | "yearly">(
     "monthly"
   ); // added
-  const [selectedPlan, setSelectedPlan] = useState<string | null>(null); // added
-
+  const [selectedAddOns, setSelectedAddOns] = useState<string[]>([]);
+  const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
   const steps = [
     <Step1 />,
     <Step2
-      billingCycle={billingCycle} // added
-      setBillingCycle={setBillingCycle} // added
-      selectedPlan={selectedPlan} // added
-      setSelectedPlan={setSelectedPlan} // added
+      billingCycle={billingCycle}
+      setBillingCycle={setBillingCycle}
+      selectedPlan={selectedPlan}
+      setSelectedPlan={setSelectedPlan}
     />,
-    <Step3 billingCycle={billingCycle} />, // added
-    <Step4 />,
+    <Step3
+      billingCycle={billingCycle}
+      selectedAddOns={selectedAddOns}
+      setSelectedAddOns={setSelectedAddOns}
+    />,
+    <Step4
+      selectedPlan={selectedPlan}
+      billingCycle={billingCycle}
+      selectedAddOns={selectedAddOns}
+    />,
   ];
 
   const { currentStepIndex, step, back, next, goTo } = useMultistepform(steps);
