@@ -328,7 +328,11 @@ function Step5(): ReactElement {
     <>
       <h1 className="step-1-heading">Thank You!</h1>
       <p className="step-1-sub-heading">Your subscription has been confirmed</p>
-      <img src="{iconThankYou}" alt="Thank you illustration" />
+      <img
+        src={iconThankYou}
+        alt="Thank you illustration"
+        className="thankyou-icon"
+      />
     </>
   );
 }
