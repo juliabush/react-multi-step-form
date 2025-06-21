@@ -323,7 +323,15 @@ function Step4({
     </>
   );
 }
-
+function Step5(): ReactElement {
+  return (
+    <>
+      <h1 className="step-1-heading">Thank You!</h1>
+      <p className="step-1-sub-heading">Your subscription has been confirmed</p>
+      <img src="{iconThankYou}" alt="Thank you illustration" />
+    </>
+  );
+}
 function App() {
   const [billingCycle, setBillingCycle] = useState<"monthly" | "yearly">(
     "monthly"
