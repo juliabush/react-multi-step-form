@@ -356,6 +356,7 @@ function App() {
       billingCycle={billingCycle}
       selectedAddOns={selectedAddOns}
     />,
+    <Step5 />,
   ];
 
   const { currentStepIndex, step, back, next, goTo } = useMultistepform(steps);
