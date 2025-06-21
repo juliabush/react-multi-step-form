@@ -258,10 +258,12 @@ function Step4({
   selectedPlan,
   billingCycle,
   selectedAddOns,
+  goTo,
 }: {
   selectedPlan: string | null;
   billingCycle: "monthly" | "yearly";
   selectedAddOns: string[];
+  goTo: (index: number) => void;
 }): ReactElement {
   const planPrices: Record<string, { monthly: number; yearly: number }> = {
     Arcade: { monthly: 9, yearly: 90 },
@@ -296,7 +298,17 @@ function Step4({
             <p className="summary-plan-title">
               {selectedPlan} ({billingCycle})
             </p>
-            <p className="change-link">Change</p>
+            <p
+              className="change-link"
+              style={{
+                cursor: "pointer",
+                textDecoration: "underline",
+                color: "#4A90E2",
+              }}
+              onClick={() => goTo(1)}
+            >
+              Change
+            </p>
           </div>
           <p className="summary-plan-price">
             ${planPrice}/{billingCycle === "yearly" ? "yr" : "mo"}
@@ -342,6 +354,7 @@ function App() {
   ); // added
   const [selectedAddOns, setSelectedAddOns] = useState<string[]>([]);
   const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
+
   const steps = [
     <Step1 />,
     <Step2
@@ -359,6 +372,7 @@ function App() {
       selectedPlan={selectedPlan}
       billingCycle={billingCycle}
       selectedAddOns={selectedAddOns}
+      goTo={goTo}
     />,
     <Step5 />,
   ];
