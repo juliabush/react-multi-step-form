@@ -258,12 +258,10 @@ function Step4({
   selectedPlan,
   billingCycle,
   selectedAddOns,
-  goTo,
 }: {
   selectedPlan: string | null;
   billingCycle: "monthly" | "yearly";
   selectedAddOns: string[];
-  goTo: (index: number) => void;
 }): ReactElement {
   const planPrices: Record<string, { monthly: number; yearly: number }> = {
     Arcade: { monthly: 9, yearly: 90 },
@@ -297,17 +295,6 @@ function Step4({
           <div>
             <p className="summary-plan-title">
               {selectedPlan} ({billingCycle})
-            </p>
-            <p
-              className="change-link"
-              style={{
-                cursor: "pointer",
-                textDecoration: "underline",
-                color: "#4A90E2",
-              }}
-              onClick={() => goTo(1)}
-            >
-              Change
             </p>
           </div>
           <p className="summary-plan-price">
@@ -372,11 +359,9 @@ function App() {
       selectedPlan={selectedPlan}
       billingCycle={billingCycle}
       selectedAddOns={selectedAddOns}
-      goTo={goTo}
     />,
     <Step5 />,
   ];
-
   const { currentStepIndex, step, back, next, goTo } = useMultistepform(steps);
 
   return (
