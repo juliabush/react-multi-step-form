@@ -402,6 +402,7 @@ function App() {
           </button>
         )}
         <button
+          type="submit"
           className="step-toggle-button"
           form="step-1-form"
           onClick={next}
