@@ -401,19 +401,21 @@ function App() {
 
       <div className="container-text">
         {step}
-        {currentStepIndex > 0 && (
+        {currentStepIndex > 0 && currentStepIndex < steps.length - 1 && (
           <button className="step-back-button" onClick={back}>
             Go back
           </button>
         )}
-        <button
-          type="submit"
-          className="step-toggle-button"
-          form="step-1-form"
-          onClick={next}
-        >
-          Next Step
-        </button>
+        {currentStepIndex < steps.length - 1 && (
+          <button
+            type="submit"
+            className="step-toggle-button"
+            form="step-1-form"
+            onClick={next}
+          >
+            {currentStepIndex === steps.length - 2 ? "Confirm" : "Next Step"}
+          </button>
+        )}
       </div>
     </div>
   );
