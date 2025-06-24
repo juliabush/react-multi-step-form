@@ -1,5 +1,6 @@
 import { useMultistepform } from "./useMultistepform";
 import bgSidebarDesktop from "./assets/bg-sidebar-desktop.svg";
+import bgSidebarMobile from "./assets/bg-sidebar-mobile.svg";
 import iconArcade from "./assets/icon-arcade.svg";
 import iconAdvanced from "./assets/icon-advanced.svg";
 import iconPro from "./assets/icon-pro.svg";
@@ -376,7 +377,11 @@ function App() {
         alt="Colourful Sidebar"
         className="desktop-image"
       />
-
+      <img
+        src={bgSidebarMobile}
+        alt="Colourful sidebar for mobile"
+        className="mobile-image"
+      />
       <ul className="page-numbers" role="list">
         {[...Array(4)].map((_, index) => (
           <div key={index} className="row-flexbox-list">
