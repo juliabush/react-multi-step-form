@@ -377,11 +377,12 @@ function App() {
         alt="Colourful Sidebar"
         className="desktop-image"
       />
-      <img
+      {/* <img
         src={bgSidebarMobile}
         alt="Colourful sidebar for mobile"
         className="mobile-image"
-      />
+      /> */}
+      {/* TRy and get this out of the container  */}
       <ul className="page-numbers" role="list">
         {[...Array(4)].map((_, index) => (
           <div key={index} className="row-flexbox-list">
