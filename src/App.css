@@ -288,7 +288,9 @@ hr {
 @media (min-width: 320px) and (max-width: 600px) {
   .container {
     background-color: red;
+    place-content: center;
     width: 100%;
+    position: static;
   }
   .desktop-image {
     display: none;
@@ -298,13 +300,36 @@ hr {
     object-fit: cover;
   }
   .container-text {
+    place-self: center;
     display: flex;
     flex-direction: column;
     width: 80%;
     color: black;
-    position: absolute;
+    position: static;
     padding: 1rem;
     left: 0;
     top: 0;
+  }
+  .page-numbers {
+    display: flex;
+    position: relative;
+    place-self: center;
+  }
+  .step-description {
+    display: none;
+  }
+  .step {
+    display: none;
+  }
+  .step-1-heading {
+    position: static;
+  }
+  .step-1-sub-heading {
+    position: static;
+  }
+  .step-back-button,
+  .step-toggle-button {
+    position: absolute;
+    bottom: 0;
   }
 }
