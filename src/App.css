@@ -283,7 +283,16 @@ hr {
   border-bottom-left-radius: 0.5rem;
 }
 .thankyou-icon {
-  width: 40px;
+  width: 100px;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  place-self: center;
+}
+.thankyou-description {
+  font-size: 1.5rem;
+  text-align: center;
+  color: #000000c4;
+  font-weight: 500;
 }
 @media (min-width: 320px) and (max-width: 600px) {
   .container {

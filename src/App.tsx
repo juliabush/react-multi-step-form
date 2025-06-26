@@ -333,7 +333,7 @@ function Step5(): ReactElement {
         alt="Thank you illustration"
         className="thankyou-icon"
       />
-      <p>
+      <p className="thankyou-description">
         Thanks for subscribing! We've sent a confirmation email to
         test@email.com. We're excited to have you on board and hope you enjoy
         using our platform!
