@@ -316,13 +316,26 @@ hr {
     color: black;
     position: static;
     padding: 1rem;
-    left: 0;
-    top: 0;
   }
   .page-numbers {
     display: flex;
     position: relative;
     place-self: center;
+    padding-top: 3rem;
+    padding-bottom: 0;
+    gap: 0.5rem;
+  }
+  .billing-card {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    width: 130px;
+    height: 167px;
+    padding: 0.75rem;
+    background-color: white;
+    border-radius: 0.5rem;
+    border: 2px solid rgba(0, 0, 0, 0.329);
+    cursor: pointer;
   }
   .step-description {
     display: none;
