@@ -370,6 +370,30 @@ function App() {
   ];
   const { currentStepIndex, step, back, next, goTo } = useMultistepform(steps);
 
+  const handleSubmit = async () => {
+    const userData = {
+      name: "Stephen King",
+      email: "stephenking@lorem.com",
+      phone: "+1 234 567 890",
+      plan: selectedPlan,
+      billingCycle,
+      addOns: selectedAddOns,
+    };
+    try {
+      const response = await fetch("http://localhost:3000/submit-form", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(userData),
+      });
+      if (response.ok) {
+        console.log("Confirmation email sent!");
+      } else {
+        console.error("Failed to send confirmation email");
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+    }
+  };
   return (
     <div className="container">
       <img
