@@ -347,6 +347,9 @@ function App() {
   ); // added
   const [selectedAddOns, setSelectedAddOns] = useState<string[]>([]);
   const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
 
   const steps = [
     <Step1 />,
@@ -435,7 +438,12 @@ function App() {
             type="submit"
             className="step-toggle-button"
             form="step-1-form"
-            onClick={next}
+            onClick={async () => {
+              if (currentStepIndex === steps.length - 2) {
+                await handleSubmit();
+              }
+              next();
+            }}
           >
             {currentStepIndex === steps.length - 2 ? "Confirm" : "Next Step"}
           </button>
