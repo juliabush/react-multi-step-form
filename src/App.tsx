@@ -9,7 +9,23 @@ import iconThankYou from "./assets/icon-thank-you.svg";
 import "./App.css";
 import type { ReactElement } from "react";
 
-function Step1(): ReactElement {
+interface Step1Props {
+  name: string;
+  setName: (val: string) => void;
+  email: string;
+  setEmail: (val: string) => void;
+  phone: string;
+  setPhone: (val: string) => void;
+}
+
+function Step1({
+  name,
+  setName,
+  email,
+  setEmail,
+  phone,
+  setPhone,
+}: Step1Props) {
   return (
     <>
       <h1 className="step-1-heading">Personal info</h1>
@@ -20,6 +36,7 @@ function Step1(): ReactElement {
         <div className="form-mini-flexbox">
           <label htmlFor="Name">Name</label>
           <input
+            value={name}
             className="step-1-input"
             type="text"
             name="name"
@@ -30,6 +47,7 @@ function Step1(): ReactElement {
         <div className="form-mini-flexbox">
           <label htmlFor="Email">Email Address </label>
           <input
+            value={email}
             className="step-1-input"
             type="email"
             name="email"
@@ -40,6 +58,7 @@ function Step1(): ReactElement {
         <div className="form-mini-flexbox">
           <label htmlFor="Phone Number">Phone Number</label>
           <input
+            value={phone}
             className="step-1-input"
             type="text"
             name="phone-number"
@@ -352,7 +371,14 @@ function App() {
   const [phone, setPhone] = useState("");
 
   const steps = [
-    <Step1 />,
+    <Step1
+      name={name}
+      setName={setName}
+      email={email}
+      setEmail={setEmail}
+      phone={phone}
+      setPhone={setPhone}
+    />,
     <Step2
       billingCycle={billingCycle}
       setBillingCycle={setBillingCycle}
