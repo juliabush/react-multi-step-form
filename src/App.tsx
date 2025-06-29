@@ -405,7 +405,6 @@ function App() {
     <Step5 email={email} />,
   ];
   const { currentStepIndex, step, back, next, goTo } = useMultistepform(steps);
-
   const handleSubmit = async (): Promise<Response | null> => {
     const userData = {
       name,
@@ -477,10 +476,15 @@ function App() {
             className="step-toggle-button"
             form="step-1-form"
             onClick={async () => {
+              console.log(currentStepIndex, steps.length);
               if (currentStepIndex === steps.length - 2) {
+                console.log("Hi");
                 const response = await handleSubmit();
+                console.log(response);
+                console.log("Hi2");
                 if (response?.ok) {
                   next();
+                  alert("It worked");
                 } else {
                   alert(
                     "Something went wrong submitting the form. Please try again."
