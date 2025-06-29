@@ -402,7 +402,7 @@ function App() {
   ];
   const { currentStepIndex, step, back, next, goTo } = useMultistepform(steps);
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (): Promise<Response | null> => {
     const userData = {
       name: "Stephen King",
       email: "stephenking@lorem.com",
@@ -469,9 +469,13 @@ function App() {
             form="step-1-form"
             onClick={async () => {
               if (currentStepIndex === steps.length - 2) {
-                await handleSubmit();
+                const response = await handleSubmit();
+                if (response?.ok) {
+                  next();
+                }
+              } else {
+                next();
               }
-              next();
             }}
           >
             {currentStepIndex === steps.length - 2 ? "Confirm" : "Next Step"}
