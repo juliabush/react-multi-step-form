@@ -1,5 +1,5 @@
 const express = require("express");
-const nodemailer = require("nodemailer");
+const nodeMailer = require("nodemailer");
 const cors = require("cors");
 
 const app = express();
@@ -9,11 +9,11 @@ app.use(express.json());
 app.post("/submit-form", async (req, res) => {
   const { name, email, phone, plan, billingCycle, addOns } = req.body;
 
-  const transporter = nodemailer.createTransport({
+  const transporter = nodeMailer.createTransport({
     service: "gmail",
     auth: {
       user: "j.elizabethbush@gmail.com",
-      pass: "your-app-password",
+      pass: "cdhf fsij yhuu vour",
     },
   });
 
