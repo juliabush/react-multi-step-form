@@ -34,37 +34,40 @@ function Step1({
       </p>
       <form id="step-1-form">
         <div className="form-mini-flexbox">
-          <label htmlFor="Name">Name</label>
+          <label>Name </label>
           <input
+            id="Name"
             value={name}
             onChange={(e) => setName(e.target.value)}
             className="step-1-input"
             type="text"
-            name="name"
+            name="Name"
             placeholder="e.g. Stephen King"
             required
           />
         </div>
         <div className="form-mini-flexbox">
-          <label htmlFor="Email">Email Address </label>
+          <label>Email Address </label>
           <input
+            id="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             className="step-1-input"
             type="email"
-            name="email"
+            name="Email"
             placeholder="e.g. stephenking@lorem.com"
             required
           />
         </div>
         <div className="form-mini-flexbox">
-          <label htmlFor="Phone Number">Phone Number</label>
+          <label>Phone Number </label>
           <input
+            id="Phone Number"
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
             className="step-1-input"
             type="text"
-            name="phone-number"
+            name="Phone Number"
             placeholder="e.g. +1 234 567 890"
             required
           />
@@ -345,7 +348,7 @@ function Step4({
     </>
   );
 }
-function Step5(): ReactElement {
+function Step5({ email }: { email: string }): ReactElement {
   return (
     <>
       <h1 className="step-1-heading">Thank You!</h1>
@@ -357,12 +360,13 @@ function Step5(): ReactElement {
       />
       <p className="thankyou-description">
         Thanks for subscribing! We've sent a confirmation email to
-        test@email.com. We're excited to have you on board and hope you enjoy
-        using our platform!
+        <strong> {email}</strong>. We're excited to have you on board and hope
+        you enjoy using our platform!
       </p>
     </>
   );
 }
+
 function App() {
   const [billingCycle, setBillingCycle] = useState<"monthly" | "yearly">(
     "monthly"
@@ -398,15 +402,15 @@ function App() {
       billingCycle={billingCycle}
       selectedAddOns={selectedAddOns}
     />,
-    <Step5 />,
+    <Step5 email={email} />,
   ];
   const { currentStepIndex, step, back, next, goTo } = useMultistepform(steps);
 
   const handleSubmit = async (): Promise<Response | null> => {
     const userData = {
-      name: "Stephen King",
-      email: "stephenking@lorem.com",
-      phone: "+1 234 567 890",
+      name,
+      email,
+      phone,
       plan: selectedPlan,
       billingCycle,
       addOns: selectedAddOns,
@@ -417,15 +421,20 @@ function App() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(userData),
       });
+
       if (response.ok) {
         console.log("Confirmation email sent!");
+        return response;
       } else {
         console.error("Failed to send confirmation email");
+        return null;
       }
     } catch (error) {
       console.error("Error submitting form:", error);
+      return null;
     }
   };
+
   return (
     <div className="container">
       <img
@@ -472,6 +481,10 @@ function App() {
                 const response = await handleSubmit();
                 if (response?.ok) {
                   next();
+                } else {
+                  alert(
+                    "Something went wrong submitting the form. Please try again."
+                  );
                 }
               } else {
                 next();
