@@ -37,6 +37,7 @@ function Step1({
           <label htmlFor="Name">Name</label>
           <input
             value={name}
+            onChange={(e) => setName(e.target.value)}
             className="step-1-input"
             type="text"
             name="name"
@@ -48,6 +49,7 @@ function Step1({
           <label htmlFor="Email">Email Address </label>
           <input
             value={email}
+            onChange={(e) => setEmail(e.target.value)}
             className="step-1-input"
             type="email"
             name="email"
@@ -59,6 +61,7 @@ function Step1({
           <label htmlFor="Phone Number">Phone Number</label>
           <input
             value={phone}
+            onChange={(e) => setPhone(e.target.value)}
             className="step-1-input"
             type="text"
             name="phone-number"
