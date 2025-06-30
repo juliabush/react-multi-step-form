@@ -13,7 +13,7 @@ app.post("/submit-form", async (req, res) => {
     service: "gmail",
     auth: {
       user: "j.elizabethbush@gmail.com",
-      pass: "cdhf fsij yhuu vour",
+      // pass: "cdhf fsij yhuu vour",
     },
   });
 
