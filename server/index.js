@@ -9,13 +9,12 @@ app.use(express.json());
 app.post("/submit-form", async (req, res) => {
   const { name, email, phone, plan, billingCycle, addOns } = req.body;
 
-  const transporter = nodeMailer.createTransport({
-    service: "gmail",
-    auth: {
-      user: "j.elizabethbush@gmail.com",
-      // pass: "cdhf fsij yhuu vour",
-    },
-  });
+  // const transporter = nodeMailer.createTransport({
+  //   service: "gmail",
+  //   auth: {
+  //     user: "j.elizabethbush@gmail.com",
+  //   },
+  // });
 
   const mailOptions = {
     from: "j.elizabethbush@gmail.com",
