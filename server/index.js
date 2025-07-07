@@ -14,3 +14,8 @@ const transporter = nodemailer.createTransport({
     pass: "lytg fjzt fncb xynp",
   },
 });
+
+// express() is a function call that creates a web server object and stores as app constant
+const app = express();
+// assigning constant port a value, 3000 is used as its a common default
+const port = 3000;
