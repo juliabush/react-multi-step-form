@@ -29,3 +29,7 @@ app.use(
 );
 // app.post defines a route handler for http post requests, /sendmail is the url endpoint, sendMAil is a function called whenever post is made to endpoint
 app.post("/sendmail", sendMail);
+// app.listen starts the express server, port 3000, then callback function to check if its running
+app.listen(port, () => {
+  console.log("Example app listening on port 3000");
+});
