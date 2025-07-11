@@ -33,4 +33,16 @@ app.post("/sendmail", sendMail);
 app.listen(port, () => {
   console.log("Example app listening on port 3000");
 });
-// send mail
+// send mail function handles http post requests
+// hypertext transfer protocol for datacommunication across servers
+// request.body contains the data send from frontend
+// extraxts to, sub, and msg from request body
+function sendMail(request) {
+  const { to, sub, msg } = request.body;
+  transporter.sendMail({
+    from: "j.elizabethbush@gmail.com",
+    to,
+    subject: sub,
+    html: msg,
+  });
+}
