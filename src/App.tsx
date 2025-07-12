@@ -16,6 +16,10 @@ import type { ReactElement } from "react";
 // JS is dynamically types, allowing variables to be changed on the go
 // TS id static typing, meaning you define the type of a variable
 // aka whether its a number or string
+import { useState } from "react";
+// imports useState hook from react library
+// state is a built-in way to store and manage data that changes over time
+// react re-renders the component when state changes
 
 // In TS, an interface is a way to describe the shape of an object
 // object is collection of key value-pairs
@@ -32,6 +36,11 @@ interface Step1Props {
   setPhone: (val: string) => void;
 }
 
+// function that takes in a parameter, but that parameter
+// in this case is an object, and it is destructured
+// real javascript objects must always have key-value pairs
+// but here we are only recieving an object, and immediately
+// unpacking its keys into local variables
 function Step1({
   name,
   setName,
@@ -41,6 +50,10 @@ function Step1({
   setPhone,
 }: Step1Props) {
   return (
+    // JSX similair to HTML but allows for javascript inside
+    // such as dynamic values with {}
+    // dynamic values= variable that can be changed at runtime
+    // runtime = when code executes
     <>
       <h1 className="step-1-heading">Personal info</h1>
       <p className="step-1-sub-heading">
@@ -53,6 +66,9 @@ function Step1({
             id="Name"
             value={name}
             onChange={(e) => setName(e.target.value)}
+            // e stands for event
+            // onChange is a prop you add to input elements to look out for change
+            // calls setName function with input value
             className="step-1-input"
             type="text"
             name="Name"
@@ -90,7 +106,6 @@ function Step1({
     </>
   );
 }
-import { useState } from "react";
 
 function Step2({
   billingCycle,
