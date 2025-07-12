@@ -183,7 +183,10 @@ function Step2({
           className={`billing-card ${
             isSelected("Advanced") ? "selected-plan" : ""
           }`}
+          // again template literals applied for dual css classes
           onClick={() => handleSelectPlan("Advanced")}
+          // onclick event handler passes through function with
+          // Advanced as its argument that changes state
         >
           <img
             src={iconAdvanced}
@@ -192,20 +195,34 @@ function Step2({
           />
           <p className="billing-card-title">Advanced</p>
           <p className="billing-card-price">
-            {billingCycle === "yearly" ? "$120/yr" : "$12/mo"} {/* modified */}
+            {billingCycle === "yearly" ? "$120/yr" : "$12/mo"}
+            {/* ternary operator acting as if/else */}
+            {/* if is ? */}
+            {/* else is : */}
           </p>
           {billingCycle === "yearly" && (
             <p className="billing-card-offer"> 2 months free</p>
           )}
+          {/* && logical and operator */}
+          {/* checking if billingCycle stricly equals yearly */}
+          {/* if true it conditionally renders the paragraph */}
         </button>
         <button
           className={`billing-card ${isSelected("Pro") ? "selected-plan" : ""}`}
+          // template literal with backticks to combine dynamic values
+          // ternary expression so if/else
+          // if pro is selected class is applied if not empty string
           onClick={() => handleSelectPlan("Pro")}
+          // event listener for when button is clicked
+          // passes handleSelectPlan function with pro argument
         >
           <img src={iconPro} alt="Icon for the pro plan" className="icon" />
           <p className="billing-card-title">Pro</p>
           <p className="billing-card-price">
             {billingCycle === "yearly" ? "$150/yr" : "$15/mo"}
+            {/* ternary expression so if/else */}
+            {/* strict equality check */}
+            {/* if condition is true return yearly, if false monthly */}
           </p>
           {billingCycle === "yearly" && (
             <p className="billing-card-offer"> 2 months free</p>
