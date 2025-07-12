@@ -1,4 +1,5 @@
 import { useMultistepform } from "./useMultistepform";
+// imports a custom hook created to navigate form steps
 import bgSidebarDesktop from "./assets/bg-sidebar-desktop.svg";
 import bgSidebarMobile from "./assets/bg-sidebar-mobile.svg";
 import iconArcade from "./assets/icon-arcade.svg";
@@ -6,12 +7,25 @@ import iconAdvanced from "./assets/icon-advanced.svg";
 import iconPro from "./assets/icon-pro.svg";
 import iconCheckmark from "./assets/icon-checkmark.svg";
 import iconThankYou from "./assets/icon-thank-you.svg";
+// imports image files, svgs, as modules
+// modules are just code files that are reusable
 import "./App.css";
+// imports css file
 import type { ReactElement } from "react";
+// imports a type
+// JS is dynamically types, allowing variables to be changed on the go
+// TS id static typing, meaning you define the type of a variable
+// aka whether its a number or string
 
+// In TS, an interface is a way to describe the shape of an object
+// object is collection of key value-pairs
+// shape means what keys does it have and what types
 interface Step1Props {
+  // each property is assigned a type
   name: string;
+  // name must be string
   setName: (val: string) => void;
+  // takes in one argument, val, which must be string
   email: string;
   setEmail: (val: string) => void;
   phone: string;
