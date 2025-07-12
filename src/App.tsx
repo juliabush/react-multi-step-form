@@ -227,26 +227,43 @@ function Step2({
           {billingCycle === "yearly" && (
             <p className="billing-card-offer"> 2 months free</p>
           )}
+          {/* strictly equals and logical and operator */}
+          {/* conditionally renders a paragraph with classname */}
         </button>
       </div>
 
       <div className="toggle-monthly-yearly">
         <p className={billingCycle === "yearly" ? "" : "active-label"}>
+          {/* ternary expressions with strictly equals */}
+          {/* if billingCycle equals yearly then conditionally render empty string */}
+          {/* if false conditionally render class active-label */}
           Monthly
         </p>
         <button
           className={`toggle-switch ${
             billingCycle === "yearly" ? "yearly" : "monthly"
           }`}
+          // template literal to allow embedded expressions
+          // ternary operator, if billingcycle stricly equals yearly, then use yearly
+          // otherwise use monthly
           onClick={() =>
             setBillingCycle(billingCycle === "monthly" ? "yearly" : "monthly")
           }
+          // onclick event handler watching for clicks
+          // anonymous arrow function to delay execution until click
+          // state setter fucntion with setBillingCycle
+          // ternary expression
+          // if the current billingCycle is "monthly", it switches to yealry
+          // otheriwse it switches to monthly
         >
           <div className="toggle-knob" />
         </button>
         <p className={billingCycle === "yearly" ? "active-label" : ""}>
           Yearly
         </p>
+        {/* ternary expression with strict equality */}
+        {/* if true it applies the active-label class */}
+        {/* if false it applies an empty string*/}
       </div>
     </>
   );
