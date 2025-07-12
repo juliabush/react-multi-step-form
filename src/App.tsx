@@ -112,17 +112,28 @@ function Step2({
   setBillingCycle,
   selectedPlan,
   setSelectedPlan,
-}: {
-  billingCycle: "monthly" | "yearly"; // added
-  setBillingCycle: (cycle: "monthly" | "yearly") => void; // added
-  selectedPlan: string | null; // added
-  setSelectedPlan: (plan: string) => void; // added
+}: // react component
+// part in parentheses is destructuring an object passed
+// as a parameter
+// in react parameters are often referred to as props
+{
+  // destructuring props(paramters) object
+  // defining types
+  // important cause it can prevent bugs
+  billingCycle: "monthly" | "yearly";
+  setBillingCycle: (cycle: "monthly" | "yearly") => void;
+  selectedPlan: string | null;
+  setSelectedPlan: (plan: string) => void;
 }): ReactElement {
   const handleSelectPlan = (plan: string) => {
     setSelectedPlan(plan);
   };
-
+  // null is a value of nothing
+  // void is a type and means function doesnt return anything
   const isSelected = (plan: string) => selectedPlan === plan;
+  // === is strict equality, it asks:
+  // are the values the same?
+  // are the types also the same?
 
   return (
     <>
@@ -136,20 +147,37 @@ function Step2({
           className={`billing-card ${
             isSelected("Arcade") ? "selected-plan" : ""
           }`}
+          // utilizes template literals `` to combine css classes
+          // call function isSelected
+          // if isSelected returns true it applies "selected-plan" class
+          // otheriwse it applies an empty string
           onClick={() => handleSelectPlan("Arcade")}
+          // onClick sets a click event handler
+          // handler is an arrow function that calls handleSelectedPlan with argument Arcade
+          // triggers selection of the Arcade plan and updates state
+          // Parameters vs. Argument:
+          // parameter is a variable in a fucntion definition
+          // acts like a placeholder
+          // argument is the actual value you pass to a function
         >
           <img
             src={iconArcade}
+            // javascript variable leading to svg import
             alt="Icon for the arcade plan"
             className="icon"
           />
           <p className="billing-card-title">Arcade</p>
           <p className="billing-card-price">
-            {billingCycle === "yearly" ? "$90/yr" : "$9/mo"} {/* modified */}
+            {billingCycle === "yearly" ? "$90/yr" : "$9/mo"}
+            {/*ternary expression that works like if/else  */}
+            {/* true returns 90/yr, false 9/mo */}
           </p>
           {billingCycle === "yearly" && (
             <p className="billing-card-offer"> 2 months free</p>
           )}
+          {/* strict equality check */}
+          {/* && is a logical and operator to conditionally render */}
+          {/* if true adds paragraph with class if false nothing */}
         </button>
         <button
           className={`billing-card ${
@@ -177,7 +205,7 @@ function Step2({
           <img src={iconPro} alt="Icon for the pro plan" className="icon" />
           <p className="billing-card-title">Pro</p>
           <p className="billing-card-price">
-            {billingCycle === "yearly" ? "$150/yr" : "$15/mo"} {/* modified */}
+            {billingCycle === "yearly" ? "$150/yr" : "$15/mo"}
           </p>
           {billingCycle === "yearly" && (
             <p className="billing-card-offer"> 2 months free</p>
