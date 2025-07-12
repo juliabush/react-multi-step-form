@@ -273,19 +273,47 @@ function Step3({
   billingCycle,
   selectedAddOns,
   setSelectedAddOns,
-}: {
+}: // paramater destructuring
+// three keys for the props object
+// we are still recieving one object we just unpack its contents
+{
   billingCycle: "monthly" | "yearly";
   selectedAddOns: string[];
   setSelectedAddOns: React.Dispatch<React.SetStateAction<string[]>>;
-}): ReactElement {
+}): // typescript type annotations for destructured props
+// billing must be a string, only either monthly or yearly
+// This line | is a union type
+// allows prop to accept more than one type or value
+// selectedAddOns must be an array of strings
+// setSelectedAddOns is a type of state updater function returned by usestate
+// function must accept a array of strings or function that returns one
+
+ReactElement {
+  // typescript syntax, component returns ReactElement
+  // type annotation for return value
   const toggleAddOn = (addon: string) => {
-    // added toggle function
-    setSelectedAddOns((prev) =>
-      prev.includes(addon) ? prev.filter((a) => a !== addon) : [...prev, addon]
+    // defining a function named toggleAddOn
+    // takes on argument, addon which has to be a string
+    // const declared functions are not hoisted and are stored in a variable
+    // good cause they are modular, predictable scoping
+    setSelectedAddOns(
+      (prev) =>
+        // updating state using setSelectedAddOns
+        // recieves paramater prev, previous state value
+        // array of strings
+        prev.includes(addon)
+          ? prev.filter((a) => a !== addon)
+          : [...prev, addon]
+      // Checks if addon is already in the selectedAddOns array
+      // If addon is already seleceted it removes it from array
+      // if addon is not selected it adds to array using spread operator
     );
   };
 
-  const isSelected = (addon: string) => selectedAddOns.includes(addon); // added helper
+  const isSelected = (addon: string) => selectedAddOns.includes(addon);
+  // helper function to check if addon is sleceted
+  // it return true if it is
+  // returns false if it isnt
 
   return (
     <>
@@ -295,11 +323,17 @@ function Step3({
       </p>
       <div className="add-ons-flexbox">
         <button
-          type="button" // added so it doesn't submit form accidentally
+          type="button"
           className={`add-on-button ${
             isSelected("Online Service") ? "selected-addon" : ""
-          }`} // added class toggle
-          onClick={() => toggleAddOn("Online Service")} // added onClick
+          }`} // template literal with css class
+          // ternary expression if Online Service is selected
+          // if true add class "selected-addon"
+          // if false add an empty string
+          onClick={() => toggleAddOn("Online Service")}
+          // onclick eventhandler
+          // passes function with argument Online service
+          // paramater is a placeholder, argument actually has a value
         >
           <div className="add-ons-flex">
             <img
@@ -307,7 +341,11 @@ function Step3({
               alt="Icon of a checkmark"
               className={`add-on-checkmark ${
                 isSelected("Online Service") ? "checkmark-selected" : ""
-              }`} // added conditional class
+              }`}
+              // template literal
+              // ternary expression
+              // when online service isselected if true apply css class
+              // if false apply empty string
             />
             <div className="add-ons-text">
               <p className="add-on-title">Online Service</p>
@@ -315,6 +353,10 @@ function Step3({
             </div>
             <p className="add-on-price">
               {billingCycle === "yearly" ? "+$10/yr" : "+$1/mo"}
+              {/* ternary expression
+              billing cycle if it stricly equals yearly
+              then if true add yearly price
+              then if false add monthly */}
             </p>
           </div>
         </button>
@@ -323,8 +365,14 @@ function Step3({
           className={`add-on-button ${
             isSelected("Larger Storage") ? "selected-addon" : ""
           }`}
+          // template literal
+          // ternary expression
+          // isSelected Larger storage if true add selected-addon
+          // if false add an empty string
           onClick={() => toggleAddOn("Larger Storage")}
         >
+          {/* adding an event handler onclick */}
+          {/* when clicked function toggleAddOn with argument larger storage */}
           <div className="add-ons-flex">
             <img
               src={iconCheckmark}
@@ -332,6 +380,10 @@ function Step3({
               className={`add-on-checkmark ${
                 isSelected("Larger Storage") ? "checkmark-selected" : ""
               }`}
+              // template literal
+              // ternary expression, if/else
+              // if Larger Storage is selected and true add checkmark-selected
+              // if false add an empty string
             />
             <div className="add-ons-text">
               <p className="add-on-title">Larger Storage </p>
@@ -339,6 +391,10 @@ function Step3({
             </div>
             <p className="add-on-price">
               {billingCycle === "yearly" ? "+$20/yr" : "+$2/mo"}
+              {/* ternary expression */}
+              {/* billingcycle if stricly equals yearly */}
+              {/* if true add yearly price */}
+              {/* if false add monthly price */}
             </p>
           </div>
         </button>
@@ -347,14 +403,24 @@ function Step3({
           className={`add-on-button ${
             isSelected("Customizable Profile") ? "selected-addon" : ""
           }`}
+          // template literal
+          // ternary expression if/else
+          // isSelected Customizable profile if true add selected-addon
+          // if false then add empty string
           onClick={() => toggleAddOn("Customizable Profile")}
         >
+          {/* adding event listener of onClick */}
+          {/* function toggleAddOn with argument Customizable Profile */}
           <div className="add-ons-flex">
             <img
               src={iconCheckmark}
               alt="Icon of a checkmark"
               className={`add-on-checkmark ${
                 isSelected("Customizable Profile") ? "checkmark-selected" : ""
+                // template literal
+                // ternary expression
+                // isSelected Customizable profile if true add checkmar-selected class
+                // if false add empty-string
               }`}
             />
             <div className="add-ons-text">
@@ -363,6 +429,9 @@ function Step3({
             </div>
             <p className="add-on-price">
               {billingCycle === "yearly" ? "+$20/yr" : "+$2/mo"}
+              {/* ternary expression if billingCycle strictly equals yearly */}
+              {/* if true add yearly price */}
+              {/* if false then add monthly price */}
             </p>
           </div>
         </button>
