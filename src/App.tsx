@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useMultistepform } from "./useMultistepform";
 // imports a custom hook created to navigate form steps
 import bgSidebarDesktop from "./assets/bg-sidebar-desktop.svg";
@@ -669,7 +670,9 @@ function App() {
   // async functions always return promises
   // JS and TS are single threaded
   // tasks run one after the other, no parallel execution
-  //
+  // to not block the main-thread, JS uses an event-driven
+  // non blocking I/O model
+  // relies on the event loop,
   // typescript return type annotation
   // promise because its async
   // the value that the promise resolves will be a response object or null
@@ -677,7 +680,7 @@ function App() {
   // constant userData is creating a plain object
   // creating an object when {} is on right side
   // destructuring an object when {} is on left side
-  const handleSubmit = async (): Promise<Response | null> => {
+  const handleSubmit = async () => {
     const userData = {
       name,
       email,
@@ -687,22 +690,14 @@ function App() {
       addOns: selectedAddOns,
     };
     try {
-      const response = await fetch("http://localhost:3000/submit-form", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(userData),
+      await axios.post("http://localhost:3000/sendmail", {
+        to: "j.elizabtehbush@gmail.com",
+        sub: "This is subject",
+        msg: "This is a test email",
       });
-
-      if (response.ok) {
-        console.log("Confirmation email sent!");
-        return response;
-      } else {
-        console.error("Failed to send confirmation email");
-        return null;
-      }
     } catch (error) {
-      console.error("Error submitting form:", error);
-      return null;
+      console.log(error);
+      alert(error);
     }
   };
 
@@ -754,16 +749,6 @@ function App() {
                 const response = await handleSubmit();
                 console.log(response);
                 console.log("Hi2");
-                if (response?.ok) {
-                  next();
-                  alert("It worked");
-                } else {
-                  alert(
-                    "Something went wrong submitting the form. Please try again."
-                  );
-                }
-              } else {
-                next();
               }
             }}
           >
