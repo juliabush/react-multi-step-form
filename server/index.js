@@ -24,10 +24,20 @@ app.use(express.json());
 // app.use tells express app to aplly middleware to every http request and cors is a middleware function, that allows webpages from one domain(origin) to request another domain
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: "http://localhost:5174",
   })
 );
 // app.post defines a route handler for http post requests, /sendmail is the url endpoint, sendMAil is a function called whenever post is made to endpoint
+function sendMail(request, response) {
+  const { to, sub, msg } = request.body;
+  transporter.sendMail({
+    from: "j.elizabethbush@gmail.com",
+    to,
+    subject: sub,
+    html: msg,
+  });
+}
+
 app.post("/sendmail", sendMail);
 // app.listen starts the express server, port 3000, then callback function to check if its running
 app.listen(port, () => {
@@ -37,12 +47,3 @@ app.listen(port, () => {
 // hypertext transfer protocol for datacommunication across servers
 // request.body contains the data send from frontend
 // extraxts to, sub, and msg from request body
-function sendMail(request) {
-  const { to, sub, msg } = request.body;
-  transporter.sendMail({
-    from: "j.elizabethbush@gmail.com",
-    to,
-    subject: sub,
-    html: msg,
-  });
-}

@@ -14,7 +14,7 @@ import "./App.css";
 // imports css file
 import type { ReactElement } from "react";
 // imports a type
-// JS is dynamically types, allowing variables to be changed on the go
+// JS is dynamically typed, allowing variables to be changed on the go
 // TS id static typing, meaning you define the type of a variable
 // aka whether its a number or string
 import { useState } from "react";
@@ -681,14 +681,14 @@ function App() {
   // creating an object when {} is on right side
   // destructuring an object when {} is on left side
   const handleSubmit = async () => {
-    const userData = {
-      name,
-      email,
-      phone,
-      plan: selectedPlan,
-      billingCycle,
-      addOns: selectedAddOns,
-    };
+    // const userData = {
+    //   name,
+    //   email,
+    //   phone,
+    //   plan: selectedPlan,
+    //   billingCycle,
+    //   addOns: selectedAddOns,
+    // };
     try {
       await axios.post("http://localhost:3000/sendmail", {
         to: "j.elizabtehbush@gmail.com",
@@ -739,10 +739,10 @@ function App() {
         )}
         {currentStepIndex < steps.length - 1 && (
           <button
-            type="submit"
             className="step-toggle-button"
             form="step-1-form"
-            onClick={async () => {
+            onClick={next}
+            {...async () => {
               console.log(currentStepIndex, steps.length);
               if (currentStepIndex === steps.length - 2) {
                 console.log("Hi");
