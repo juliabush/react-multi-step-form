@@ -444,12 +444,24 @@ function Step4({
   selectedPlan,
   billingCycle,
   selectedAddOns,
-}: {
+}: // function props(parameters) in a destructured object
+{
   selectedPlan: string | null;
+  // null means a value of intentionally nothing
+  // defining type of selected plan with union type |
   billingCycle: "monthly" | "yearly";
   selectedAddOns: string[];
+  // defining type can only be an array of strings
 }): ReactElement {
   const planPrices: Record<string, { monthly: number; yearly: number }> = {
+    // declaring a constant object of planPrices
+    // typescript type annotation using built in helper RECORD
+    // what is record?
+    // tells typescript:
+    // object should have keys of the type of KeyType
+    // values of type ValueType
+    // Keys must be strings like ("Arcade", "Advanced", "Pro")
+    // Values must be objects with a monthly or yearly number
     Arcade: { monthly: 9, yearly: 90 },
     Advanced: { monthly: 12, yearly: 120 },
     Pro: { monthly: 15, yearly: 150 },
@@ -460,14 +472,26 @@ function Step4({
     "Larger Storage": { monthly: 2, yearly: 20 },
     "Customizable Profile": { monthly: 2, yearly: 20 },
   };
+  // addOnPrices is a constant
+  // record is a typescript utility function
+  // utlity type: built in generic types
+  // help you quickly describe common object patterns
+  // keys like online service are string keys
+  // values must be objects with two number properties, monthly and yearly
 
   const planPrice = selectedPlan ? planPrices[selectedPlan][billingCycle] : 0;
   const addOnsTotal = selectedAddOns.reduce(
     (sum, addon) => sum + addOnPrices[addon][billingCycle],
     0
   );
+  // setting the planPrice based on the selectedPlan
+  // if ternary expression returns false then it falls back to 0
+  // selectedAddOns is an array of addon names
+  // .reduce accumulates a value , so it sums up prices for each addon
 
   const total = planPrice + addOnsTotal;
+
+  // sums planPrice and addOnsTotal to find total
 
   return (
     <>
@@ -481,19 +505,30 @@ function Step4({
           <div>
             <p className="summary-plan-title">
               {selectedPlan} ({billingCycle})
+              {/* dynamic values result in dynamic rendering */}
             </p>
           </div>
           <p className="summary-plan-price">
             ${planPrice}/{billingCycle === "yearly" ? "yr" : "mo"}
+            {/* ternary expression, if/else */}
+            {/* slash here is just visual */}
           </p>
         </div>
         <hr />
         {selectedAddOns.map((addon) => (
+          // .map iterates over each item in the array
+          // returns a new array of something
+          // in this case it creates a list of selected-add-ons
           <div key={addon} className="summary-addon-row">
             <p>{addon}</p>
             <p>
               +${addOnPrices[addon][billingCycle]}/
+              {/* here bracket notation is used to look up values in an object */}
+              {/* how to tell the difference with bracket notation */}
+              {/* if its an array, [] means get by index */}
+              {/* if its an object, [] means get the value by key */}
               {billingCycle === "yearly" ? "yr" : "mo"}
+              {/* ternary expression, if/else */}
             </p>
           </div>
         ))}
@@ -501,14 +536,28 @@ function Step4({
 
       <div className="summary-total">
         <p>Total (per {billingCycle === "yearly" ? "year" : "month"})</p>
+        {/* ternary expression, if/else */}
+        {/* billingCycle stricly equals yearly */}
+        {/* if true return year */}
+        {/* if false return month */}
         <p className="summary-total-amount">
           ${total}/{billingCycle === "yearly" ? "yr" : "mo"}
+          {/* dollar sign is visual */}
+          {/* dynamic value */}
+          {/* ternary expression, if/else */}
+          {/* strict equality makes sure both the type and value are the same */}
         </p>
       </div>
     </>
   );
 }
 function Step5({ email }: { email: string }): ReactElement {
+  // step5 takes one parameter, object with key email
+  // typescript type annotation, email must be a string
+  // key is the name in an object
+  // property is a key-value pair
+  // function must have an object with email property
+  // returns a react element
   return (
     <>
       <h1 className="step-1-heading">Thank You!</h1>
