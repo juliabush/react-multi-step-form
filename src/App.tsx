@@ -579,14 +579,57 @@ function Step5({ email }: { email: string }): ReactElement {
 function App() {
   const [billingCycle, setBillingCycle] = useState<"monthly" | "yearly">(
     "monthly"
-  ); // added
+  );
+  // billing cycle is a state variable
+  // setBillingCycle is a function to update that state
+  // this pairing can be referred to as state tuple
+  // hooks are functions that let you use reacts features inside components
+  // useState is a hook
+  // type here is that it can only be string of monthly or yearly
+  // union type is the |
   const [selectedAddOns, setSelectedAddOns] = useState<string[]>([]);
+  // selectedAddOns is a state variable
+  // string[] is an array of strings
+  // initial state is an empty array seen by ([])
   const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
+  // type is either a string or null
+  // union type |
+  // initial value is null as seen in angle brackets ()
+  // common practice to provide initial value
+  // typescript can infer states type from it
+  // for example (0) infers its a number
+  // null is a value you can assign
+  // explicit "no value"
+  // void is a type that means function returns nothing
+  // undefined means a variable has not been assigned a value yet
+  // undefined is both a value and a type
   const [name, setName] = useState("");
+  // initial value as seen in angle brackets is empty string
+  // typescript infers the type to be a string
+  // typescript always tries to infer a type or wants you to explixitly declare
+  // this allows us to catch errors early
+  // wheras in JS you only catch them after the code runs
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
 
   const steps = [
+    // array of react components
+    // each component passes its own parameters
+    // they are dynamic values coming from components state
+    // inside each component the props are passed as object
+    // props are react-specific concept
+    // passsed to components
+    // paramaters are a general programming concept
+    // variables that are defined in function signature
+    // function signature defines: its name, parameters and type like in typescript
+    // other typed languages: Java, C/C++, Go, Rust, Swift, Kotlin
+    // require you to define type at compile time(before running code)
+    // a compiler is a program that changes human readable code into machine readable code
+    // compile time refers to when code is being checked and translated
+    // computer is analyzing and building it
+    // syntax errors and type mismatches show up here
+    // run time is when compiled code executes or when user runs it
+    // functions are executed and variables hold real data
     <Step1
       name={name}
       setName={setName}
@@ -614,6 +657,26 @@ function App() {
     <Step5 email={email} />,
   ];
   const { currentStepIndex, step, back, next, goTo } = useMultistepform(steps);
+  // useMultiStepForm is a custom hook, passing steps
+  // Hook is returning an object with its keys
+  // Object destructuring, grabs values directly
+  // What does that means?
+  // object destructuring takes values directly and assigns them to local variable
+  // async means this function performs asynchronous work
+  // fetch, await
+  // is asyn used when backend is involved? why? what does it mean?
+  // async allows you to pause execution until a promise is resolved
+  // async functions always return promises
+  // JS and TS are single threaded
+  // tasks run one after the other, no parallel execution
+  //
+  // typescript return type annotation
+  // promise because its async
+  // the value that the promise resolves will be a response object or null
+  // why is it response rather then request?
+  // constant userData is creating a plain object
+  // creating an object when {} is on right side
+  // destructuring an object when {} is on left side
   const handleSubmit = async (): Promise<Response | null> => {
     const userData = {
       name,
