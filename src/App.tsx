@@ -691,7 +691,7 @@ function App() {
     // };
     try {
       await axios.post("http://localhost:3000/sendmail", {
-        to: "j.elizabtehbush@gmail.com",
+        to: "j.elizabethbush@gmail.com",
         sub: "This is subject",
         msg: "This is a test email",
       });
@@ -741,14 +741,23 @@ function App() {
           <button
             className="step-toggle-button"
             form="step-1-form"
-            onClick={next}
-            {...async () => {
-              console.log(currentStepIndex, steps.length);
+            onClick={async (e) => {
+              e.preventDefault();
+              // preventing refresh
               if (currentStepIndex === steps.length - 2) {
-                console.log("Hi");
-                const response = await handleSubmit();
-                console.log(response);
-                console.log("Hi2");
+                next();
+                console.log("Next Step");
+                // this gives us the final step so it works for final button
+                await handleSubmit();
+                // can work without await, but moves to the next step immediateley
+              }
+              // else if (currentStepIndex < steps.length - 2) {
+              //   next();
+              // }
+              // else does not take any conditions
+              // only else if can be used here to take a condition
+              else {
+                next();
               }
             }}
           >
