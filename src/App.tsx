@@ -1,4 +1,5 @@
 import axios from "axios";
+// axios used to communicate with API's
 import { useMultistepform } from "./useMultistepform";
 // imports a custom hook created to navigate form steps
 import bgSidebarDesktop from "./assets/bg-sidebar-desktop.svg";
