@@ -1,5 +1,16 @@
 import axios from "axios";
 // axios used to communicate with API's
+// promise-based HTTP client for node.js and browser
+// HTTP stands for HyperText Transfer Protocol
+// foundation of web, used to load web pages with links
+// how to axios work with promises?
+// promise is a proxy for a value, unknown when created
+// allows you to associate handlers with an asychnronous actions
+// eventual success value or failure reason
+// lets asynchronus methods return values as if it
+// were synchronous
+// promise is in one of these states
+// pending, fufilled, or rejected.
 import { useMultistepform } from "./useMultistepform";
 // imports a custom hook created to navigate form steps
 import bgSidebarDesktop from "./assets/bg-sidebar-desktop.svg";
