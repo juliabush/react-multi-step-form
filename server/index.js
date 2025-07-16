@@ -27,14 +27,15 @@ app.use(
     origin: "http://localhost:5173",
   })
 );
+
 // app.post defines a route handler for http post requests, /sendmail is the url endpoint, sendMAil is a function called whenever post is made to endpoint
 function sendMail(req) {
   const { to, sub, msg } = req.body;
   transporter.sendMail({
     from: "j.elizabethbush@gmail.com",
-    to,
-    subject: sub,
-    html: msg,
+    to: ,
+    subject: sub.text,
+    html: emailHtml,
   });
 }
 

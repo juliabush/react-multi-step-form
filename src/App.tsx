@@ -693,19 +693,19 @@ function App() {
   // creating an object when {} is on right side
   // destructuring an object when {} is on left side
   const handleSubmit = async () => {
-    // const userData = {
-    //   name,
-    //   email,
-    //   phone,
-    //   plan: selectedPlan,
-    //   billingCycle,
-    //   addOns: selectedAddOns,
-    // };
+    const userData = {
+      name,
+      email,
+      phone,
+      plan: selectedPlan,
+      billingCycle,
+      addOns: selectedAddOns,
+    };
     try {
       await axios.post("http://localhost:3000/sendmail", {
-        to: "j.elizabethbush@gmail.com",
-        sub: "This is subject",
-        msg: "This is a test email",
+        to: { name },
+        sub: { email },
+        msg: { phone },
       });
     } catch (error) {
       console.log(error);
