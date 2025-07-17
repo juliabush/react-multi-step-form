@@ -33,9 +33,9 @@ function sendMail(req) {
   const { to, sub, msg } = req.body;
   transporter.sendMail({
     from: "j.elizabethbush@gmail.com",
-    to: ,
+    to: to.email,
     subject: sub.text,
-    html: emailHtml,
+    text: msg.text,
   });
 }
 
