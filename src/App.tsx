@@ -703,13 +703,21 @@ function App() {
     };
     try {
       await axios.post("http://localhost:3000/sendmail", {
-        to: { name },
-        sub: { email },
-        msg: { phone },
+        to: { name, email },
+        sub: { text: "New Signup Multi-Step-Form" },
+        msg: {
+          phone,
+          plan: selectedPlan,
+          billingCycle,
+          addOns: selectedAddOns,
+        },
+        // passing through objects on the frontend so backend must match up
+        // doesnt work when backend expects strings
       });
     } catch (error) {
       console.log(error);
       alert(error);
+      // displays possible errors with fronend sending axios
     }
   };
 
