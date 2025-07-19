@@ -717,7 +717,6 @@ function App() {
     } catch (error) {
       console.log(error);
       alert(error);
-      // displays possible errors with fronend sending axios
     }
   };
 
