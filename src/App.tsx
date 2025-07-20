@@ -86,7 +86,6 @@ function Step1({
             type="text"
             name="Name"
             placeholder="e.g. Stephen King"
-            required
           />
         </div>
         <div className="form-mini-flexbox">
@@ -99,7 +98,6 @@ function Step1({
             type="email"
             name="Email"
             placeholder="e.g. stephenking@lorem.com"
-            required
           />
         </div>
         <div className="form-mini-flexbox">
@@ -112,7 +110,6 @@ function Step1({
             type="text"
             name="Phone Number"
             placeholder="e.g. +1 234 567 890"
-            required
           />
         </div>
       </form>
