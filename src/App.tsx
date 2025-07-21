@@ -41,12 +41,15 @@ interface Step1Props {
   // each property is assigned a type
   name: string;
   // name must be string
+  nameError: "";
   setName: (val: string) => void;
   // takes in one argument, val, which must be string
   email: string;
   setEmail: (val: string) => void;
+  emailError: "";
   phone: string;
   setPhone: (val: string) => void;
+  phoneError: "";
 }
 
 // function that takes in a parameter, but that parameter
@@ -57,10 +60,13 @@ interface Step1Props {
 function Step1({
   name,
   setName,
+  nameError,
   email,
   setEmail,
+  emailError,
   phone,
   setPhone,
+  phoneError,
 }: Step1Props) {
   return (
     // JSX similair to HTML but allows for javascript inside
