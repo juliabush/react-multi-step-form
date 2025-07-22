@@ -88,11 +88,14 @@ function Step1({
             // e stands for event
             // onChange is a prop you add to input elements to look out for change
             // calls setName function with input value
+
             className="step-1-input"
             type="text"
             name="Name"
             placeholder="e.g. Stephen King"
           />
+          {nameError && <p>Name is required</p>}
+          {/*  if ! was used thats the logical NOT operator */}
         </div>
         <div className="form-mini-flexbox">
           <label>Email Address </label>
@@ -649,10 +652,13 @@ function App() {
     <Step1
       name={name}
       setName={setName}
+      nameError=""
       email={email}
       setEmail={setEmail}
+      emailError=""
       phone={phone}
       setPhone={setPhone}
+      phoneError=""
     />,
     <Step2
       billingCycle={billingCycle}
@@ -766,7 +772,10 @@ function App() {
             onClick={async (e) => {
               e.preventDefault();
               // preventing refresh
-              if (currentStepIndex === steps.length - 2) {
+              if (currentStepIndex === 0) {
+                console.log("Apple");
+                // this is step 1 at 0
+              } else if (currentStepIndex === steps.length - 2) {
                 next();
                 console.log("Next Step");
                 // this gives us the final step so it works for final button
