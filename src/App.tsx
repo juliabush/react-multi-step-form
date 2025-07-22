@@ -679,6 +679,8 @@ function App() {
     <Step5 email={email} />,
   ];
   const { currentStepIndex, step, back, next, goTo } = useMultistepform(steps);
+  // const { nameError, emailError, phoneError };
+
   // useMultiStepForm is a custom hook, passing steps
   // Hook is returning an object with its keys
   // Object destructuring, grabs values directly
@@ -772,15 +774,16 @@ function App() {
             onClick={async (e) => {
               e.preventDefault();
               // preventing refresh
-              if (currentStepIndex === 0) {
-                console.log("Apple");
-                // this is step 1 at 0
-              } else if (currentStepIndex === steps.length - 2) {
+              if (currentStepIndex === steps.length - 2) {
                 next();
                 console.log("Next Step");
                 // this gives us the final step so it works for final button
                 await handleSubmit();
                 // can work without await, but moves to the next step immediateley
+              } else if (nameError || emailError || phoneError) {
+                // if any of the following are true or truthy then run this code
+                console.log("Apple");
+                // this is step 1 at 0
               }
               // else if (currentStepIndex < steps.length - 2) {
               //   next();
