@@ -41,15 +41,17 @@ interface Step1Props {
   // each property is assigned a type
   name: string;
   // name must be string
-  nameError: "";
+  nameError: boolean;
+  // data type in programming with only two possible values
+  // yes/no, on/off or true/false
   setName: (val: string) => void;
   // takes in one argument, val, which must be string
   email: string;
   setEmail: (val: string) => void;
-  emailError: "";
+  emailError: boolean;
   phone: string;
   setPhone: (val: string) => void;
-  phoneError: "";
+  phoneError: boolean;
 }
 
 // function that takes in a parameter, but that parameter
@@ -94,7 +96,7 @@ function Step1({
             name="Name"
             placeholder="e.g. Stephen King"
           />
-          {nameError && <p>Name is required</p>}
+          {nameError && <p>Name is required to proceed</p>}
           {/*  if ! was used thats the logical NOT operator */}
         </div>
         <div className="form-mini-flexbox">
@@ -108,6 +110,7 @@ function Step1({
             name="Email"
             placeholder="e.g. stephenking@lorem.com"
           />
+          {emailError && <p>Email is required to proceed</p>}
         </div>
         <div className="form-mini-flexbox">
           <label>Phone Number </label>
@@ -120,6 +123,7 @@ function Step1({
             name="Phone Number"
             placeholder="e.g. +1 234 567 890"
           />
+          {phoneError && <p>Phone Number is required to proceed</p>}
         </div>
       </form>
     </>
@@ -630,7 +634,9 @@ function App() {
   // wheras in JS you only catch them after the code runs
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
-
+  const [nameError, setNameError] = useState(false);
+  const [emailError, setEmailError] = useState(false);
+  const [phoneError, setPhoneError] = useState(false);
   const steps = [
     // array of react components
     // each component passes its own parameters
@@ -652,13 +658,13 @@ function App() {
     <Step1
       name={name}
       setName={setName}
-      nameError=""
+      nameError={nameError}
       email={email}
       setEmail={setEmail}
-      emailError=""
+      emailError={emailError}
       phone={phone}
       setPhone={setPhone}
-      phoneError=""
+      phoneError={phoneError}
     />,
     <Step2
       billingCycle={billingCycle}
@@ -776,23 +782,17 @@ function App() {
               // preventing refresh
               if (currentStepIndex === steps.length - 2) {
                 next();
-                console.log("Next Step");
                 // this gives us the final step so it works for final button
                 await handleSubmit();
                 // can work without await, but moves to the next step immediateley
-              } else if (nameError || emailError || phoneError) {
-                // if any of the following are true or truthy then run this code
-                console.log("Apple");
-                // this is step 1 at 0
+              } else {
+                next();
               }
               // else if (currentStepIndex < steps.length - 2) {
               //   next();
               // }
               // else does not take any conditions
               // only else if can be used here to take a condition
-              else {
-                next();
-              }
             }}
           >
             {currentStepIndex === steps.length - 2 ? "Confirm" : "Next Step"}
