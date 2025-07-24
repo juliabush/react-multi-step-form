@@ -780,6 +780,28 @@ function App() {
             onClick={async (e) => {
               e.preventDefault();
               // preventing refresh
+              if (currentStepIndex === 0) {
+                // checks if we are on step 1
+                // strict equality operator checks both value and type
+                const isNameValid = name.trim() !== "";
+                // name is current value of the input
+                // .trim() removes any trailling whitespace
+                // !== is the not equal operator
+                const isEmailValid = email.trim() !== "";
+                const isPhoneValid = phone.trim() !== "";
+
+                setNameError(!isNameValid);
+                // ! is the logical NOT operator
+                // flips boolean value from true to false and vice versa
+                setEmailError(!isEmailValid);
+                setPhoneError(!isPhoneValid);
+
+                if (!isNameValid || !isEmailValid || !isPhoneValid) {
+                  // || is the logical OR operator
+                  // if name is invalid or email or phone dont proceed
+                  return;
+                }
+              }
               if (currentStepIndex === steps.length - 2) {
                 next();
                 // this gives us the final step so it works for final button
