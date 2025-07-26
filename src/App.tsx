@@ -798,7 +798,7 @@ function App() {
 
                 if (!isNameValid || !isEmailValid || !isPhoneValid) {
                   // || is the logical OR operator
-                  // if name is invalid or email or phone dont
+                  // if name is invalid or email or phone
                   return;
                 }
               }
