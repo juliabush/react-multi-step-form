@@ -91,3 +91,11 @@ body {
   font-weight: var(--Font-regular);
   place-content: center;
 }
+@media (min-width: 320px) and (max-width: 600px) {
+  html,
+  body {
+    background-image: url("./assets/bg-sidebar-mobile.svg");
+    background-repeat: no-repeat;
+    background-color: rgb(219, 219, 250);
+  }
+}

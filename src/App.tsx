@@ -96,7 +96,9 @@ function Step1({
             name="Name"
             placeholder="e.g. Stephen King"
           />
-          {nameError && <p>Name is required to proceed</p>}
+          {nameError && (
+            <p className="error-message">Name is required to proceed</p>
+          )}
           {/*  if ! was used thats the logical NOT operator */}
         </div>
         <div className="form-mini-flexbox">
@@ -110,7 +112,9 @@ function Step1({
             name="Email"
             placeholder="e.g. stephenking@lorem.com"
           />
-          {emailError && <p>Email is required to proceed</p>}
+          {emailError && (
+            <p className="error-message">Email is required to proceed</p>
+          )}
         </div>
         <div className="form-mini-flexbox">
           <label>Phone Number </label>
@@ -123,7 +127,9 @@ function Step1({
             name="Phone Number"
             placeholder="e.g. +1 234 567 890"
           />
-          {phoneError && <p>Phone Number is required to proceed</p>}
+          {phoneError && (
+            <p className="error-message">Phone Number is required to proceed</p>
+          )}
         </div>
       </form>
     </>

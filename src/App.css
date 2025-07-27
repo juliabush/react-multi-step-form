@@ -294,12 +294,13 @@ hr {
   color: #000000c4;
   font-weight: 500;
 }
+.error-message {
+  color: red;
+}
 @media (min-width: 320px) and (max-width: 600px) {
-  /* html {
-    background-image: ;
-  } */
   .container {
-    background-color: red;
+    z-index: 10;
+    background-color: var(--clr-White);
     place-content: center;
     width: 100%;
     position: static;
@@ -318,15 +319,38 @@ hr {
     width: 80%;
     color: black;
     position: static;
-    padding: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 0.5rem;
+  }
+  .circular-page-number {
+    display: grid;
+    place-content: center;
+    width: 40px;
+    height: 40px;
+    padding: 0.7rem;
+    border: 2px solid rgba(8, 0, 114, 0.788);
+    border-radius: 50%;
+    color: rgb(25, 8, 121);
+    cursor: pointer;
+  }
+  .circular-page-number:hover {
+    background-color: rgba(17, 113, 197, 0.5);
+  }
+  .active-step {
+    background-color: hsla(228, 54%, 46%, 0.767);
+    color: hsl(213, 96%, 18%);
+    font-weight: 700;
+    border: 2px solid hsl(228, 92%, 34%);
   }
   .page-numbers {
     display: flex;
     position: relative;
     place-self: center;
-    padding-top: 3rem;
+    padding-top: 2rem;
     padding-bottom: 0;
     gap: 0.5rem;
+    /* background-color: red; */
   }
   .billing-card {
     display: flex;
@@ -352,10 +376,27 @@ hr {
   .step-1-sub-heading {
     position: static;
   }
-  .step-back-button,
   .step-toggle-button {
-    position: absolute;
-    bottom: 0;
+    position: static;
+    bottom: -40%;
+    place-self: end;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    border: none;
+    background-color: hsl(213, 96%, 18%);
+    color: white;
+    cursor: pointer;
+  }
+  .step-back-button {
+    position: relative;
+    bottom: -50px;
+    place-self: start;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    border: none;
+    background-color: hsl(213, 17%, 80%);
+    color: rgb(0, 0, 0);
+    cursor: pointer;
   }
   .add-ons-text {
     padding: 0.5rem;
